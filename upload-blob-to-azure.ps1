@@ -1,9 +1,9 @@
-# Variables - replace with your values
-$storageAccountName = "sa$(Get-Random)"
-$resourceGroupName = "powershell-testing"  # Specify your resource group here
-$location = "UKSouth"  # Specify the Azure region
-$containerName = "my-container"
-$localFilePath = "./test.txt"
+# Variables - replace with Read-Host for user input
+$storageAccountName = Read-Host -Prompt "Enter a name for the Storage Account (e.g., sa$(Get-Random))"
+$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
+$location = Read-Host -Prompt "Enter the Azure region (e.g., UKSouth)"
+$containerName = Read-Host -Prompt "Enter the container name"
+$localFilePath = Read-Host -Prompt "Enter the local file path (e.g., ./test.txt)"
 
 # Notify that the process is starting
 Write-Host "Starting the Azure Blob upload process..."
