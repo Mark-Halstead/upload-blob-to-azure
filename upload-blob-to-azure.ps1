@@ -1,9 +1,9 @@
-# Variables - replace with Read-Host for user input
-$storageAccountName = Read-Host -Prompt "Enter a name for the Storage Account (e.g., sa$(Get-Random))"
-$resourceGroupName = Read-Host -Prompt "Enter the resource group name"
-$location = Read-Host -Prompt "Enter the Azure region (e.g., UKSouth)"
-$containerName = Read-Host -Prompt "Enter the container name"
-$localFilePath = Read-Host -Prompt "Enter the local file path (e.g., ./test.txt)"
+# Variables
+$storageAccountName = Read-Host -Prompt "enter sa$(Get-Random)"
+$resourceGroupName = Read-Host -Prompt "enter rg name"
+$location = Read-Host -Prompt "enter region"
+$containerName = Read-Host -Prompt "enter container name"
+$localFilePath = Read-Host -Prompt "enter the local file path to blob"
 
 # Notify that the process is starting
 Write-Host "Starting the Azure Blob upload process..."
