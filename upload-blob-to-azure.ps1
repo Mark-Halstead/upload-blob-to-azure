@@ -40,16 +40,15 @@ if ($null -eq $container) {
     Write-Host "Container $containerName already exists."
 }
 
-# Get the file name from the local path
+
+
+# get local file name
 $fileName = [System.IO.Path]::GetFileName($localFilePath)
 Write-Host "Preparing to upload file: $fileName from path: $localFilePath"
 
-# Upload the file to the blob storage container
+# upload file to blob storage container
 Write-Host "Uploading file to blob storage container: $containerName"
 Set-AzStorageBlobContent -File $localFilePath -Container $containerName -Blob $fileName -Context $context
 
-# Confirm upload completion
 Write-Host "File '$fileName' uploaded to container '$containerName' successfully."
-
-# Final completion message
 Write-Host "Azure Blob upload process completed successfully."
