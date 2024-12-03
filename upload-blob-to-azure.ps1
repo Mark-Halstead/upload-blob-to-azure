@@ -5,15 +5,9 @@ $location = Read-Host -Prompt "enter region"
 $containerName = Read-Host -Prompt "enter container name"
 $localFilePath = Read-Host -Prompt "enter the local file path to blob"
 
-# Notify that the process is starting
-Write-Host "Starting the Azure Blob upload process..."
 
-# Authenticate with Azure
-Connect-AzAccount
-
-# Check if the storage account exists
+# Check if the storage account exists and create one if not
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -Name $storageAccountName -ErrorAction SilentlyContinue
-
 if ($null -eq $storageAccount) {
     # If the storage account doesn't exist, create it
     Write-Host "Storage account $storageAccountName does not exist. Creating a new storage account..."
@@ -26,16 +20,17 @@ if ($null -eq $storageAccount) {
     Write-Host "Storage account $storageAccountName already exists."
 }
 
-# Create the storage context (no key needed in Azure Cloud Shell)
+
+
+# create the storage context
 Write-Host "Creating the storage context for account: $storageAccountName"
 $context = New-AzStorageContext -StorageAccountName $storageAccountName
-
-# Confirm storage context creation
 Write-Host "Storage context created successfully."
 
-# Check if the container exists
-$container = Get-AzStorageContainer -Name $containerName -Context $context -ErrorAction SilentlyContinue
 
+
+# check if the container exists
+$container = Get-AzStorageContainer -Name $containerName -Context $context -ErrorAction SilentlyContinue
 if ($null -eq $container) {
     # If the container doesn't exist, create it
     Write-Host "Container $containerName does not exist. Creating container..."
